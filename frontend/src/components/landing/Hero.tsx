@@ -46,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
                 SPLIT PAYMENTS.
               </h1>
               <p className="text-gray-500 text-lg">
-                Connect with players and venues in your area
+                Connect with players and venues in your area.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4">
@@ -56,11 +56,14 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
               >
                 Get Started
               </button>
-              <button 
+              <a 
+                href="https://forms.gle/FcYgcMv5GLvUWAbo8"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-[#FF9F1C] text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#FF9F1C]/90 transition-colors"
               >
-                Download The App
-              </button>
+                Join Waitlist
+              </a>
             </div>
           </div>
           

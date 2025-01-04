@@ -44,7 +44,7 @@ export default function ArenaOffersSection() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            What Arena <span className="text-[#F5A524]">Offers</span>
+            What ARENA Offers
           </h2>
         </motion.div>
 
@@ -80,4 +80,3 @@ export default function ArenaOffersSection() {
     </section>
   )
 }
-

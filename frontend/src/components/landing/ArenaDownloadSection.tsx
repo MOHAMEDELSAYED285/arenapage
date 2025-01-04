@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Mail, Instagram, Linkedin } from 'lucide-react'
 
 const ArenaDownloadSection = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,11 +30,14 @@ const ArenaDownloadSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <button 
+            <a 
+              href="https://forms.gle/FcYgcMv5GLvUWAbo8"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#F5A524] hover:bg-[#F5A524]/90 text-white font-bold text-lg px-12 py-4 rounded-lg transition-colors shadow-lg hover:shadow-xl"
             >
-              DOWNLOAD THE APP
-            </button>
+              JOIN WAITLIST
+            </a>
           </motion.div>
         </motion.div>
 
@@ -66,42 +69,39 @@ const ArenaDownloadSection = () => {
                 </form>
               </div>
 
-              {/* Links Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              {/* Contact and Social Links */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                 <div>
                   <h3 className="text-black font-bold text-lg mb-4">CONTACT US</h3>
-                  <a 
-                    href="#" 
-                    className="text-black/80 hover:text-black transition-colors"
-                  >
-                    Get in touch
-                  </a>
-                </div>
-                
-                <div>
-                  <h3 className="text-black font-bold text-lg mb-4">FAQs</h3>
-                  <a 
-                    href="#" 
-                    className="text-black/80 hover:text-black transition-colors"
-                  >
-                    Common questions
-                  </a>
+                  <div className="space-y-2">
+                    <a 
+                      href="mailto:contact@joinarena.co.uk" 
+                      className="flex items-center gap-2 text-black/80 hover:text-black transition-colors"
+                    >
+                      <Mail className="w-4 h-4" />
+                      contact@joinarena.co.uk
+                    </a>
+                  </div>
                 </div>
                 
                 <div>
                   <h3 className="text-black font-bold text-lg mb-4">FOLLOW US</h3>
                   <div className="flex gap-4">
                     <a 
-                      href="#" 
+                      href="https://www.instagram.com/joinarena/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-black/80 hover:text-black transition-colors"
                     >
-                      Twitter
+                      <Instagram className="w-5 h-5" />
                     </a>
                     <a 
-                      href="#" 
+                      href="https://www.linkedin.com/company/thearenaapp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-black/80 hover:text-black transition-colors"
                     >
-                      Instagram
+                      <Linkedin className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
@@ -122,4 +122,3 @@ const ArenaDownloadSection = () => {
 }
 
 export default ArenaDownloadSection
-
