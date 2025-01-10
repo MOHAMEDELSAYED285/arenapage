@@ -1,15 +1,9 @@
-'use client'
-
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Mail, Instagram, Linkedin } from 'lucide-react'
+import { Mail, Instagram, Linkedin } from 'lucide-react'
+import NewsletterSignup from '../newsletter/NewsletterSignup'
 
 const ArenaDownloadSection = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // Handle newsletter signup
-  }
-
   return (
     <section className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,23 +44,7 @@ const ArenaDownloadSection = () => {
                 <h3 className="text-black font-bold text-2xl mb-6">
                   SIGN UP FOR OUR NEWSLETTER
                 </h3>
-                <form onSubmit={handleSubmit} className="group">
-                  <div className="flex items-center bg-white rounded-lg p-2 focus-within:ring-2 focus-within:ring-black/20 transition-shadow">
-                    <input 
-                      type="email" 
-                      placeholder="Email Address" 
-                      className="flex-grow bg-transparent px-3 py-3 text-black placeholder:text-gray-500 focus:outline-none"
-                      required
-                    />
-                    <button 
-                      type="submit" 
-                      className="bg-black text-white p-3 rounded-md hover:bg-black/90 transition-colors"
-                      aria-label="Submit newsletter signup"
-                    >
-                      <ArrowRight className="h-6 w-6" />
-                    </button>
-                  </div>
-                </form>
+                <NewsletterSignup />
               </div>
 
               {/* Contact and Social Links */}
