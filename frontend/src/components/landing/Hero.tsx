@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../../contexts/AuthContext';
+import WaitlistModal from '../modals/WaitlistModal';
 
 interface HeroProps {
   onGetStarted: () => void;
@@ -10,6 +11,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
   const router = useRouter();
   const { user } = useAuth();
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   const handleGetStarted = () => {
     const savedPreferences = localStorage.getItem('userQuizPreferences');
@@ -56,14 +58,12 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
               >
                 Get Started
               </button>
-              <a 
-                href="https://forms.gle/FcYgcMv5GLvUWAbo8"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button 
+                onClick={() => setIsWaitlistOpen(true)}
                 className="bg-[#FF9F1C] text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#FF9F1C]/90 transition-colors"
               >
                 Join Waitlist
-              </a>
+              </button>
             </div>
           </div>
           
@@ -110,6 +110,12 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
           </div>
         </div>
       </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isWaitlistOpen}
+        onClose={() => setIsWaitlistOpen(false)}
+      />
     </section>
   );
 };
