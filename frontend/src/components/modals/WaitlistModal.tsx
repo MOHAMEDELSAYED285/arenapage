@@ -11,9 +11,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    gender: '',
-    age: '',
-    referral: ''
+    gender: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
@@ -34,7 +32,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       if (response.ok) {
         setStatus('success');
         setMessage('Thank you for joining our waitlist!');
-        setFormData({ fullName: '', email: '', gender: '', age: '', referral: '' });
+        setFormData({ fullName: '', email: '', gender: '' });
         setTimeout(() => {
           onClose();
           setStatus('idle');
@@ -49,7 +47,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
@@ -121,48 +119,35 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
 
               <div>
                 <label className="block text-sm font-medium mb-2">Gender</label>
-                <select
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#F5A524] transition-colors"
-                  required
-                >
-                  <option value="">Select gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Age</label>
-                <input
-                  type="number"
-                  name="age"
-                  value={formData.age}
-                  onChange={handleChange}
-                  min="16"
-                  max="100"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#F5A524] transition-colors"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">How did you hear about us?</label>
-                <textarea
-                  name="referral"
-                  value={formData.referral}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#F5A524] transition-colors"
-                  rows={3}
-                  required
-                />
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, gender: 'male' }))}
+                    className={`px-6 py-4 rounded-2xl border-2 transition-all ${
+                      formData.gender === 'male'
+                        ? 'border-black bg-black text-white'
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                  >
+                    Male
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, gender: 'female' }))}
+                    className={`px-6 py-4 rounded-2xl border-2 transition-all ${
+                      formData.gender === 'female'
+                        ? 'border-black bg-black text-white'
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                  >
+                    Female
+                  </button>
+                </div>
               </div>
 
               <button
                 type="submit"
-                disabled={status === 'loading'}
+                disabled={status === 'loading' || !formData.gender}
                 className="w-full bg-[#F5A524] text-black font-semibold py-4 rounded-xl hover:bg-[#F5A524]/90 transition-colors disabled:opacity-50"
               >
                 {status === 'loading' ? 'Submitting...' : 'Join Waitlist'}
