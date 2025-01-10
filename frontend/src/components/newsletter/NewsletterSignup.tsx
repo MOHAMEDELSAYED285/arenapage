@@ -11,8 +11,7 @@ export default function NewsletterSignup() {
     setStatus('loading');
 
     try {
-      // Google Apps Script URL to handle form submissions
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzWIyrRu6T-RoxMeaC5FDEgL82gBjHlYLDEhatQfk65rG3P_-o-dHCV7xvQSvw-JxN0EQ/exec', {
+      const response = await fetch('https://formspree.io/f/mannaezz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,6 +29,8 @@ export default function NewsletterSignup() {
     } catch (error) {
       setStatus('error');
       setMessage('Something went wrong. Please try again.');
+    } finally {
+      setStatus('idle');
     }
   };
 
@@ -62,7 +63,11 @@ export default function NewsletterSignup() {
       </form>
       
       {message && (
-        <div className={`mt-2 text-sm ${status === 'success' ? 'text-green-500' : 'text-red-500'}`}>
+        <div 
+          className={`mt-2 text-sm ${
+            status === 'success' ? 'text-green-500' : 'text-red-500'
+          }`}
+        >
           {message}
         </div>
       )}
