@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Instagram, Linkedin } from 'lucide-react'
 import NewsletterSignup from '../newsletter/NewsletterSignup'
+import WaitlistModal from '../modals/WaitlistModal'
 
 const ArenaDownloadSection = () => {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
   return (
     <section className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,14 +27,12 @@ const ArenaDownloadSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <a 
-              href="https://forms.gle/FcYgcMv5GLvUWAbo8"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => setIsWaitlistOpen(true)}
               className="bg-[#F5A524] hover:bg-[#F5A524]/90 text-white font-bold text-lg px-12 py-4 rounded-lg transition-colors shadow-lg hover:shadow-xl"
             >
               JOIN WAITLIST
-            </a>
+            </button>
           </motion.div>
         </motion.div>
 
@@ -95,6 +96,12 @@ const ArenaDownloadSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isWaitlistOpen}
+        onClose={() => setIsWaitlistOpen(false)}
+      />
     </section>
   )
 }
