@@ -313,35 +313,35 @@ const QuizForm: React.FC<QuizFormProps> = ({ onClose }) => {
           )}
         </div>
 
-        {/* Sports Selection */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-6">
-            <Flame className="w-5 h-5 text-arena-orange" />
-            <h3 className="text-xl font-semibold">What sports do you play?</h3>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {['FOOTBALL', 'BASKETBALL', 'TENNIS', 'CRICKET', 'RUGBY'].map(sport => (
-              <motion.button
-                key={sport}
-                type="button"
-                onClick={() => !loading && handleSportSelection(sport)}
-                whileHover={!loading ? { scale: 1.02 } : {}}
-                whileTap={!loading ? { scale: 0.98 } : {}}
-                className={`px-6 py-4 rounded-2xl border-2 transition-all ${
-                  formData.favouriteSports.includes(sport)
-                    ? 'border-black bg-black text-white'
-                    : 'border-gray-200 hover:border-gray-300'
-                } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                disabled={loading}
-              >
-                {sport}
-              </motion.button>
-            ))}
-          </div>
-          {errors.favouriteSports && (
-            <p className="text-red-500 text-sm mt-2">{errors.favouriteSports}</p>
-          )}
-        </div>
+       {/* Sports Selection */}
+<div className="space-y-4">
+  <div className="flex items-center gap-2 mb-6">
+    <Flame className="w-5 h-5 text-arena-orange" />
+    <h3 className="text-xl font-semibold">What sports do you play?</h3>
+  </div>
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+    {['FOOTBALL', 'BASKETBALL', 'TENNIS', 'CRICKET', 'RUGBY'].map(sport => (
+      <motion.button
+        key={sport}
+        type="button"
+        onClick={() => !loading && handleSportSelection(sport)}
+        whileHover={!loading ? { scale: 1.02 } : {}}
+        whileTap={!loading ? { scale: 0.98 } : {}}
+        className={`px-3 sm:px-6 py-3 sm:py-4 rounded-2xl border-2 transition-all text-sm sm:text-base ${
+          formData.favouriteSports.includes(sport)
+            ? 'border-black bg-black text-white'
+            : 'border-gray-200 hover:border-gray-300'
+        } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        disabled={loading}
+      >
+        {sport}
+      </motion.button>
+    ))}
+  </div>
+  {errors.favouriteSports && (
+    <p className="text-red-500 text-sm mt-2">{errors.favouriteSports}</p>
+  )}
+</div>
 
         {/* Submit Button */}
         <div className="flex justify-center pt-6">
