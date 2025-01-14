@@ -257,8 +257,6 @@ const QuizForm: React.FC<QuizFormProps> = ({ onClose }) => {
                 <option value="">Select gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-                <option value="other">Other</option>
-                <option value="prefer-not-to-say">Prefer not to say</option>
               </select>
               {errors.gender && (
                 <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
@@ -313,13 +311,13 @@ const QuizForm: React.FC<QuizFormProps> = ({ onClose }) => {
           )}
         </div>
 
-       {/* Sports Selection */}
+      {/* Sports Selection */}
 <div className="space-y-4">
   <div className="flex items-center gap-2 mb-6">
     <Flame className="w-5 h-5 text-arena-orange" />
     <h3 className="text-xl font-semibold">What sports do you play?</h3>
   </div>
-  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+  <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3">
     {['FOOTBALL', 'BASKETBALL', 'TENNIS', 'CRICKET', 'RUGBY'].map(sport => (
       <motion.button
         key={sport}
@@ -327,7 +325,7 @@ const QuizForm: React.FC<QuizFormProps> = ({ onClose }) => {
         onClick={() => !loading && handleSportSelection(sport)}
         whileHover={!loading ? { scale: 1.02 } : {}}
         whileTap={!loading ? { scale: 0.98 } : {}}
-        className={`px-3 sm:px-6 py-3 sm:py-4 rounded-2xl border-2 transition-all text-sm sm:text-base ${
+        className={`px-3 sm:px-6 py-3 sm:py-4 rounded-2xl border-2 transition-all text-sm sm:text-base whitespace-normal ${
           formData.favouriteSports.includes(sport)
             ? 'border-black bg-black text-white'
             : 'border-gray-200 hover:border-gray-300'
