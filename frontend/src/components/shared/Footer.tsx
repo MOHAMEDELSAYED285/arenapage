@@ -1,5 +1,4 @@
 'use client'
-
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Instagram, Linkedin, Youtube, MapPin, Mail } from 'lucide-react'
@@ -9,7 +8,7 @@ const Footer = () => {
     { icon: MapPin, text: "London, United Kingdom" },
     { icon: Mail, text: "contact@joinarena.co.uk" }
   ]
-
+  
   const socialLinks = [
     { icon: Instagram, href: "https://www.instagram.com/joinarena/", label: "Instagram" },
     { icon: Linkedin, href: "https://www.linkedin.com/company/thearenaapp/", label: "LinkedIn" },
@@ -33,7 +32,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-
+        
         {/* Bottom Bar */}
         <div className="flex flex-col items-center pt-8 border-t border-gray-200 space-y-6">
           <div className="flex gap-6">
@@ -52,9 +51,13 @@ const Footer = () => {
               </motion.a>
             ))}
           </div>
-          <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} Arena. All rights reserved.
-          </p>
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <p>© {new Date().getFullYear()} Arena. All rights reserved.</p>
+            <span>•</span>
+            <Link href="/privacy-policy" className="hover:text-[#F5A524] transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
