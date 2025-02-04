@@ -53,6 +53,7 @@ export default function PrivacyPolicy() {
                   <li>Account information, including registration details</li>
                   <li>Information used for security purposes</li>
                   <li>Marketing preferences</li>
+                  <li>Device IDs</li>
                 </ul>
               </div>
 
